@@ -14,7 +14,7 @@ const CreateForm = Form.create({ name: "form_in_modal" })(
         <Modal
           visible={visible}
           title="添加用户信息"
-          okText="保存"
+          okText="添加"
           cancelText="取消"
           onCancel={onCancel}
           onOk={onCreate}
@@ -102,7 +102,12 @@ class NewFile extends React.Component {
   render() {
     return (
       <div>
-        <Button type="primary" onClick={this.showModal} style={{position:'relative',left:'90%'}}>
+        <Button
+          icon="plus"
+          type="primary"
+          onClick={this.showModal}
+          style={{ position: "absolute", left: "85%", top: "12%", zIndex: 99 }}
+        >
           新增用户
         </Button>
         <CreateForm

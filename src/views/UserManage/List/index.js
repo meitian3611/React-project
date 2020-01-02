@@ -1,9 +1,10 @@
 /** @format */
 /* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable array-callback-return */
 
 // 用户列表
 import React, { useState, useEffect } from "react"
-import { Table, Divider, Button, Modal } from "antd"
+import { Table, Divider, Button, Modal, Input } from "antd"
 import { findUser, deleteUser } from "../../../api/UserApi"
 import CollectionsPage from "../../../components/CollectionsPage"
 import Newfile from "../../../components/Newfile"
@@ -22,6 +23,7 @@ const List = ({ handleDlete }) => {
   const [loading, setLoading] = useState(false)
 
   const { confirm } = Modal
+  const { Search } = Input
 
   const columns = [
     {
@@ -121,8 +123,35 @@ const List = ({ handleDlete }) => {
     // console.log(data)
     setList(data)
   }
+
+  const handleSearch = value => {
+    let searchArr = []
+    console.log(value)
+    findUser().then(response => {
+      const { data } = response
+      // console.log(data)
+      data.forEach(item => {
+        let username = item.username.split("@")[0]
+        if (username.indexOf(value) >= 0) {
+          return searchArr.push(item)
+        }
+      })
+      console.log(searchArr)
+      setList(searchArr)
+      // })
+    })
+  }
   return (
     <div className="page-list">
+      <Search
+        placeholder="请输入要搜索的内容"
+        enterButton
+        size="large"
+        onSearch={value => {
+          handleSearch(value)
+        }}
+        style={{ width: "30%", marginBottom: "15px" }}
+      />
       <Newfile
         addUser={data => {
           handleAddUser(data)
