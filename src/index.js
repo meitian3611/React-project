@@ -1,12 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+/** @format */
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import React from "react"
+import ReactDOM from "react-dom"
+import Axios from "axios"
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+import App from "./App"
+import "./base.scss"
+
+// 全局处理 axios 的 baseURL
+Axios.defaults.baseURL = "http://localhost:9090"
+
+ReactDOM.render(<App />, document.getElementById("root"))

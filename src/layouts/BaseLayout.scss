@@ -1,0 +1,17 @@
+/** @format */
+
+.base-layout {
+  height: 100%;
+  .logo {
+    height: 32px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 16px;
+  }
+  .header {
+    background: #fff;
+  }
+  .content {
+    margin: 16px;
+    overflow-y: auto;
+  }
+}
