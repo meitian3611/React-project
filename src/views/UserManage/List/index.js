@@ -6,13 +6,14 @@ import React, { useState, useEffect } from "react"
 import { Table, Divider, Button, Modal } from "antd"
 import { findUser, deleteUser } from "../../../api/UserApi"
 import CollectionsPage from "../../../components/CollectionsPage"
+import Newfile from "../../../components/Newfile"
 
 const List = ({ handleDlete }) => {
   // 用户列表
   const [useList, setList] = useState([])
 
   // 每页显示条数
-  const [limt] = useState(8)
+  const [limt] = useState(7)
 
   // 总条数
   const [total, setTotal] = useState(1)
@@ -116,8 +117,17 @@ const List = ({ handleDlete }) => {
       setLoading(false)
     })
   }
+  const handleAddUser = data => {
+    // console.log(data)
+    setList(data)
+  }
   return (
     <div className="page-list">
+      <Newfile
+        addUser={data => {
+          handleAddUser(data)
+        }}
+      />
       <Table
         rowKey="id"
         columns={columns}

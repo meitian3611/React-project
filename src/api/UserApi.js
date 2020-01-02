@@ -18,19 +18,33 @@ export const SignIn = data => {
 }
 
 /**
- * 查询用户信息
+ * 增加用户
+ * @param {object} data
+ */
+export const addUser = data => {
+  return Axios.post("/users", data)
+}
+
+/**
+ * 删除用户
+ * @param {object} params
+ */
+export const deleteUser = params => {
+  return Axios.delete(`/users/${params}`)
+}
+/**
+ * 查询用户
+ * @param {object} params
  */
 export const findUser = params => {
   return Axios.get("/users", {
     params
   })
 }
-
-export const deleteUser = params => {
-  return Axios.delete(`/users/${params}`)
-}
-
-// 编辑保存
+/**
+ * 修改用户
+ * @param {object} data
+ */
 export const listWrite = (id, data) => {
   return Axios.patch(`/users/${id}`, data)
 }
