@@ -25,6 +25,7 @@ const List = ({ handleDlete }) => {
   const { confirm } = Modal
   const { Search } = Input
 
+  // 表头数据
   const columns = [
     {
       title: "用户编号",
@@ -54,6 +55,7 @@ const List = ({ handleDlete }) => {
       key: "action",
       render: (text, record) => (
         <span style={{ display: "flex" }}>
+          {/* 修改内容按钮 */}
           <CollectionsPage
             id={record.id}
             changeUser={data => {
@@ -61,6 +63,7 @@ const List = ({ handleDlete }) => {
             }}
           />
           <Divider type="vertical" />
+          {/* 删除内容按钮 */}
           <Button
             type="danger"
             icon="delete"
@@ -74,7 +77,6 @@ const List = ({ handleDlete }) => {
     }
   ]
   const handleChnage = data => {
-    // console.log(data)
     setList(data)
   }
   handleDlete = id => {
@@ -93,8 +95,7 @@ const List = ({ handleDlete }) => {
         })
         newData.splice(value, 1)
         setList(newData)
-      },
-      onCancel() {}
+      }
     })
   }
   useEffect(() => {
@@ -106,6 +107,7 @@ const List = ({ handleDlete }) => {
     getListPage(page)
   }
 
+  // 页面数据渲染
   const getListPage = page => {
     // 加载
     setLoading(true)
@@ -120,7 +122,6 @@ const List = ({ handleDlete }) => {
     })
   }
   const handleAddUser = data => {
-    // console.log(data)
     setList(data)
   }
 
@@ -138,7 +139,6 @@ const List = ({ handleDlete }) => {
       })
       console.log(searchArr)
       setList(searchArr)
-      // })
     })
   }
   return (
@@ -147,6 +147,7 @@ const List = ({ handleDlete }) => {
         placeholder="请输入要搜索的内容"
         enterButton
         size="large"
+        loading={loading}
         onSearch={value => {
           handleSearch(value)
         }}

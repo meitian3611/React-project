@@ -1,8 +1,6 @@
 /** @format */
 
 import React from "react"
-// import { Link } from "react-router-dom"
-// import fakeAuth from "../../fakeAuth"
 
 import { Row, Col, Form, Icon, Input, Button, Radio, message } from "antd"
 import { SignUp } from "../../api/UserApi"
@@ -57,7 +55,6 @@ class Register extends React.PureComponent {
                       { type: "email", message: "请输入正确的邮箱地址！" },
                       { min: 4, message: "账号不能小于4位数" },
                       { max: 20, message: "账号不能大于20位数" }
-
                     ]
                   })(
                     <Input
