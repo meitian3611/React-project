@@ -82,7 +82,6 @@ const List = ({ handleDlete }) => {
   handleDlete = id => {
     confirm({
       title: "是否要删除当前信息?",
-      // content: "Some descriptions",
       okText: "确认",
       okType: "primary",
       cancelText: "取消",
@@ -127,17 +126,14 @@ const List = ({ handleDlete }) => {
 
   const handleSearch = value => {
     let searchArr = []
-    console.log(value)
     findUser().then(response => {
       const { data } = response
-      // console.log(data)
       data.forEach(item => {
         let username = item.username.split("@")[0]
         if (username.indexOf(value) >= 0) {
           return searchArr.push(item)
         }
       })
-      console.log(searchArr)
       setList(searchArr)
     })
   }
@@ -147,7 +143,6 @@ const List = ({ handleDlete }) => {
         placeholder="请输入要搜索的内容"
         enterButton
         size="large"
-        loading={loading}
         onSearch={value => {
           handleSearch(value)
         }}

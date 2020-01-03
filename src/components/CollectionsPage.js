@@ -4,6 +4,9 @@ import React from "react"
 import { Button, Modal, Form, Input, Radio } from "antd"
 import { listWrite, findUser } from "../api/UserApi"
 
+/**
+ * 修改用户模块
+ */
 const CreateForm = Form.create({ name: "form_in_modal" })(
   // eslint-disable-next-line
   class extends React.Component {

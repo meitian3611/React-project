@@ -12,7 +12,7 @@ import "./base.scss"
 // 本地使用
 Axios.defaults.baseURL = "http://localhost:9090"
 
-// 上线使用
+// 项目上线使用
 // Axios.defaults.baseURL = "http://111.230.185.20:9090"
 
 ReactDOM.render(<App />, document.getElementById("root"))
